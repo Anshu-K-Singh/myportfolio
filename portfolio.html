@@ -82,7 +82,7 @@
     </div>
 
     <!-- Enhanced Introduction Section -->
-    <section id="home" class="py-20" x-data="{ show: false, text: '', cursor: true }" x-init="setTimeout(() => { show = true; typeWriter('Welcome to My Portfolio', 0); }, 500)">
+    <section id="home" class="py-20" x-data="{ show: false, text: '', cursor: true }" x-init="setTimeout(() => { show = true; typeWriter('Welcome', 0); }, 500)">
         <div class="container mx-auto p-4 text-center" x-show="show" x-transition>
             <h1 class="text-5xl font-bold text-gray-800 mb-4" :class="{ 'text-gray-200': darkMode }">
                 <span x-text="text"></span><span x-show="cursor" class="text-gray-800">|</span>
@@ -126,21 +126,19 @@
     <!-- Projects Section with Image Carousel -->
     <section id="projects" class="py-20">
         <div class="container mx-auto p-4">
-            <h1 class="text-5xl font-bold mb-4 text-center">My Projects</h1>
+            <h1 class="text-5xl font-bold mb-4 text-center">Projects</h1>
             <div class="flex flex-col md:flex-row mb-8 space-y-8 md:space-y-0 md:space-x-8">
                 <div class="md:w-1/2">
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card transition duration-300 hover:shadow-xl border-2 border-blue-500">
                         <div class="relative">
                             <div class="flex overflow-x-auto snap-x snap-mandatory">
-                                <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Project+Image+1" alt="Project 1" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Project+Image+2" alt="Project 1" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Project+Image+3" alt="Project 1" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Project+1" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/33A1FF/FFFFFF?text=Project+5" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                                <img src="wastehome.png" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                                <img src="wasteregister.png" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                                <img src="wastelogin.png" alt="Project 1" class="h-64 w-full object-cover snap-start" />
                             </div>
                         </div>
                         <div class="p-4">
-                            <h2 class="text-3xl font-bold mb-2">Project 1</h2>
+                            <h2 class="text-3xl font-bold mb-2">Waste management system</h2>
                             <p class="text-lg mb-4">This project showcases my skills in web development, featuring a responsive design and interactive elements that enhance user experience. It includes various technologies such as HTML, CSS, and JavaScript to create a seamless interface.</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
@@ -163,15 +161,15 @@
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card transition duration-300 hover:shadow-xl border-2 border-blue-500">
                         <div class="relative">
                             <div class="flex overflow-x-auto snap-x snap-mandatory">
-                                <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Project+Image+1" alt="Project 2" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Project+Image+2" alt="Project 2" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Project+Image+3" alt="Project 2" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Project+2" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/33A1FF/FFFFFF?text=Project+5" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="jobhome.png" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="job2.png" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="job3.png" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="job4.png" class="h-64 w-full object-cover snap-start" />
+                                
                             </div>
                         </div>
                         <div class="p-4">
-                            <h2 class="text-3xl font-bold mb-2">Project 2</h2>
+                            <h2 class="text-3xl font-bold mb-2">Job Flow</h2>
                             <p class="text-lg mb-4">This project focuses on building a robust backend system, ensuring data integrity and security while providing a seamless user experience. It utilizes frameworks like Django and Flask to create a powerful API.</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
@@ -197,15 +195,15 @@
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card transition duration-300 hover:shadow-xl border-2 border-blue-500">
                         <div class="relative">
                             <div class="flex overflow-x-auto snap-x snap-mandatory">
-                                <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Project+Image+1" alt="Project 3" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Project+Image+2" alt="Project 3" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Project+3" alt="Project 3" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Project+3" alt="Project 3" class="h-64 w-full object-cover snap-start" />
-                                <img src="https://via.placeholder.com/600x400/33A1FF/FFFFFF?text=Project+3" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="crichome.jpg" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="cricorg.jpg" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="cricplay.jpg" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="cricprofile.jpg" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="criccreate.jpg" alt="Project 3" class="h-64 w-full object-cover snap-start" />
                             </div>
                         </div>
                         <div class="p-4">
-                            <h2 class="text-3xl font-bold mb-2">Project 3</h2>
+                            <h2 class="text-3xl font-bold mb-2">Cricscore</h2>
                             <p class="text-lg mb-4">This project highlights my ability to integrate third-party APIs, providing enhanced functionality and user engagement. It demonstrates how to work with external data sources and create dynamic content.</p>
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
