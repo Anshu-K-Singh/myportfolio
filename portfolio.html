@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Portfolio - Anshu Kumar Singh</title>
+    <style>
+        /* Dark mode styles */
+        body.dark {
+            background-color: #1a202c; /* Dark background */
+            color: #cbd5e0; /* Light text color */
+        }
+        .dark .project-card {
+            background-color: #2d3748; /* Dark card background */
+            border-color: #4a5568; /* Darker border */
+        }
+        .dark .nav-link {
+            color: #cbd5e0; /* Light text color for links */
+        }
+        .dark .nav-link:hover {
+            color: #63b3ed; /* Light blue on hover */
+        }
+        .dark .contact-icon {
+            filter: brightness(0) invert(1); /* Invert colors for icons */
+        }
+        .dark .bg-gray-100 {
+            background-color: #2d3748; /* Dark background for contact section */
+        }
+        .dark .skill-icon {
+            filter: brightness(0) invert(1); /* Invert colors for skill icons */
+        }
+    </style>
+</head>
+
+<body class="bg-white" x-data="{ darkMode: false, open: false, text: '', cursor: true }" :class="{ 'dark': darkMode }" style="font-family: 'Fira Code', monospace;">
+    <!-- Navbar with dark mode toggle -->
+    <nav class="flex items-center justify-between bg-white text-gray-800 py-2 px-4 shadow-md sticky top-0 z-50" :class="{ 'bg-gray-800 text-gray-200': darkMode }">
+        <div class="flex items-center space-x-8">
+            <a href="#home" class="nav-link flex items-center text-gray-800 hover:text-blue-500 transition duration-300" :class="{ 'text-gray-200 hover:text-blue-400': darkMode }">
+                <span class="mr-1">🏠</span> Home
+            </a>
+            <a href="#projects" class="nav-link flex items-center text-gray-800 hover:text-blue-500 transition duration-300" :class="{ 'text-gray-200 hover:text-blue-400': darkMode }">
+                <span class="mr-1">🗒️</span> Projects
+            </a>
+            <a href="#contact" class="nav-link flex items-center text-gray-800 hover:text-blue-500 transition duration-300" :class="{ 'text-gray-200 hover:text-blue-400': darkMode }">
+                <span class="mr-1">📩</span> Contact
+            </a>
+        </div>
+        <div class="flex items-center">
+            <button @click="darkMode = !darkMode" class="flex items-center bg-gray-200 p-1 rounded" :class="{ 'bg-gray-700 text-gray-200': darkMode }">
+                <span class="text-2xl mr-1" x-show="!darkMode">🌙</span>
+                <span class="text-2xl mr-1" x-show="darkMode">☀️</span>
+                <span class="text-xs text-gray-600" :class="{ 'text-gray-300': darkMode }">Change Mode</span>
+            </button>
+            <button @click="open = !open" class="ml-4 p-2 rounded focus:outline-none md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu for Mobile -->
+    <div x-show="open" @click.away="open = false" class="absolute top-16 right-4 bg-white shadow-lg rounded-md z-50 md:hidden">
+        <div class="flex flex-col p-4">
+            <a href="#home" class="nav-link flex items-center text-gray-800 hover:text-blue-500 transition duration-300 p-2" :class="{ 'text-gray-200 hover:text-blue-400': darkMode }">
+                <span class="mr-1">🏠</span> Home
+            </a>
+            <a href="#projects" class="nav-link flex items-center text-gray-800 hover:text-blue-500 transition duration-300 p-2" :class="{ 'text-gray-200 hover:text-blue-400': darkMode }">
+                <span class="mr-1">🗒️</span> Projects
+            </a>
+            <a href="#contact" class="nav-link flex items-center text-gray-800 hover:text-blue-500 transition duration-300 p-2" :class="{ 'text-gray-200 hover:text-blue-400': darkMode }">
+                <span class="mr-1">📩</span> Contact
+            </a>
+            <div class="flex items-center mt-2">
+                <button @click="darkMode = !darkMode" class="flex items-center bg-gray-200 p-1 rounded" :class="{ 'bg-gray-700 text-gray-200': darkMode }">
+                    <span class="text-2xl mr-1" x-show="!darkMode">🌙</span>
+                    <span class="text-2xl mr-1" x-show="darkMode">☀️</span>
+                    <span class="text-xs text-gray-600" :class="{ 'text-gray-300': darkMode }">Change Mode</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Introduction Section -->
+    <section id="home" class="py-20" x-data="{ show: false, text: '', cursor: true }" x-init="setTimeout(() => { show = true; typeWriter('Welcome to My Portfolio', 0); }, 500)">
+        <div class="container mx-auto p-4 text-center" x-show="show" x-transition>
+            <h1 class="text-5xl font-bold text-gray-800 mb-4" :class="{ 'text-gray-200': darkMode }">
+                <span x-text="text"></span><span x-show="cursor" class="text-gray-800">|</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8" :class="{ 'text-gray-300': darkMode }">I'm Anshu Kumar Singh, a passionate <span class="font-semibold">Backend Developer</span> with experience in <span class="font-semibold">Python</span>.</p>
+            <p class="text-lg text-gray-600 mb-4" :class="{ 'text-gray-300': darkMode }">I specialize in building robust and scalable server-side applications, ensuring seamless data management and integration.</p>
+            <p class="text-lg text-gray-600 mb-8" :class="{ 'text-gray-300': darkMode }">Let's explore my work and see how I can help you bring your ideas to life!</p>
+            <a href="#projects" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300">View My Work</a>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto p-4 text-center">
+            <h1 class="text-5xl font-bold mb-4">My Skills</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/python.svg" alt="Python" width="80" height="80" class="skill-icon">
+                </a>
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/django.svg" alt="Django" width="80" height="80" class="skill-icon">
+                </a>
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/git.svg" alt="Git" width="80" height="80" class="skill-icon">
+                </a>
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/postman.svg" alt="Postman" width="80" height="80" class="skill-icon">
+                </a>
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/tailwindcss.svg" alt="Tailwind CSS" width="80" height="80" class="skill-icon">
+                </a>
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/mysql.svg" alt="MySQL" width="80" height="80" class="skill-icon">
+                </a>
+                <a href="#" class="flex justify-center">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linux.svg" alt="Linux" width="80" height="80" class="skill-icon">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section with Image Carousel -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto p-4">
+            <h1 class="text-5xl font-bold mb-4 text-center">My Projects</h1>
+            <div class="flex flex-col md:flex-row mb-8 space-y-8 md:space-y-0 md:space-x-8">
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card transition duration-300 hover:shadow-xl border-2 border-blue-500">
+                        <div class="relative">
+                            <div class="flex overflow-x-auto snap-x snap-mandatory">
+                                <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Project+Image+1" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Project+Image+2" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Project+Image+3" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Project+1" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/33A1FF/FFFFFF?text=Project+5" alt="Project 1" class="h-64 w-full object-cover snap-start" />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h2 class="text-3xl font-bold mb-2">Project 1</h2>
+                            <p class="text-lg mb-4">This project showcases my skills in web development, featuring a responsive design and interactive elements that enhance user experience. It includes various technologies such as HTML, CSS, and JavaScript to create a seamless interface.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <a href="#" class="mr-2">
+                                        <span class="text-2xl">🔗</span>
+                                    </a>
+                                    <span class="text-sm">Live Link</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-2">Technologies Used:</span>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/python.svg" alt="Python" width="24" height="24" class="mr-1">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/html5.svg" alt="HTML" width="24" height="24" class="mr-1">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/css3.svg" alt="CSS" width="24" height="24">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card transition duration-300 hover:shadow-xl border-2 border-blue-500">
+                        <div class="relative">
+                            <div class="flex overflow-x-auto snap-x snap-mandatory">
+                                <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Project+Image+1" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Project+Image+2" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Project+Image+3" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Project+2" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/33A1FF/FFFFFF?text=Project+5" alt="Project 2" class="h-64 w-full object-cover snap-start" />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h2 class="text-3xl font-bold mb-2">Project 2</h2>
+                            <p class="text-lg mb-4">This project focuses on building a robust backend system, ensuring data integrity and security while providing a seamless user experience. It utilizes frameworks like Django and Flask to create a powerful API.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <a href="#" class="mr-2">
+                                        <span class="text-2xl">🔗</span>
+                                    </a>
+                                    <span class="text-sm">Live Link</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-2">Technologies Used:</span>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/python.svg" alt="Python" width="24" height="24" class="mr-1">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/html5.svg" alt="HTML" width="24" height="24" class="mr-1">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/css3.svg" alt="CSS" width="24" height="24">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row mb-8 space-y-8 md:space-y-0 md:space-x-8">
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card transition duration-300 hover:shadow-xl border-2 border-blue-500">
+                        <div class="relative">
+                            <div class="flex overflow-x-auto snap-x snap-mandatory">
+                                <img src="https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Project+Image+1" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Project+Image+2" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Project+3" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Project+3" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                                <img src="https://via.placeholder.com/600x400/33A1FF/FFFFFF?text=Project+3" alt="Project 3" class="h-64 w-full object-cover snap-start" />
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h2 class="text-3xl font-bold mb-2">Project 3</h2>
+                            <p class="text-lg mb-4">This project highlights my ability to integrate third-party APIs, providing enhanced functionality and user engagement. It demonstrates how to work with external data sources and create dynamic content.</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <a href="#" class="mr-2">
+                                        <span class="text-2xl">🔗</span>
+                                    </a>
+                                    <span class="text-sm">Live Link</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-2">Technologies Used:</span>
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/python.svg" alt="Python" width="24" height="24" class="mr-1">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/html5.svg" alt="HTML" width="24" height="24" class="mr-1">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/css3.svg" alt="CSS" width="24" height="24">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto p-4 text-center fade-in">
+            <h1 class="text-5xl font-bold mb-4">Contact Me</h1>
+            <div class="flex justify-center items-center mb-4">
+                <a href="https://github.com/yourusername" class="mr-8">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg" alt="GitHub" width="64" height="64" class="contact-icon">
+                </a>
+                <a href="https://www.linkedin.com/in/yourusername" class="mr-8">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="LinkedIn" width="64" height="64" class="contact-icon">
+                </a>
+            </div>
+            <p class="text-xl mb-2">Email: your.email@example.com</p>
+            <p class="text-xl mb-2">Mobile: 8305177663</p>
+            <p class="text-xl mb-2">Location: Indore, MP, India</p>
+        </div>
+    </section>
+
+    <script>
+        function typeWriter(text, i = 0) {
+            if (i < text.length) {
+                this.text += text.charAt(i);
+                setTimeout(() => typeWriter(text, i + 1), 100);
+            } else {
+                this.cursor = false; // Hide cursor after typing
+            }
+        }
+    </script>
+</body>
+</html>
